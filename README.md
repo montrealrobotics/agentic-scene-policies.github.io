@@ -1,17 +1,10 @@
-# ConceptGraphs
+# Agentic Scene Policies
 
-This is the repository that contains source code for the [ConceptGraphs website](https://concept-graphs.github.io).
+This is the repository that contains source code for the [Agentic Scene Policies website](http://montrealrobotics.agentic-scene-policies.github.io/).
 
 # # BibTeX entry for ConceptGraphs
 ```
-@inproceedings{gu2024conceptgraphs,
-  title={Conceptgraphs: Open-vocabulary 3d scene graphs for perception and planning},
-  author={Gu, Qiao and Kuwajerwala, Ali and Morin, Sacha and Jatavallabhula, Krishna Murthy and Sen, Bipasha and Agarwal, Aditya and Rivera, Corban and Paul, William and Ellis, Kirsty and Chellappa, Rama and others},
-  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)},
-  pages={5021--5028},
-  year={2024},
-  organization={IEEE}
-}
+TODO
 ```
 
 # Website License
