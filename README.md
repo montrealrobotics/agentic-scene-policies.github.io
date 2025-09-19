@@ -2,7 +2,7 @@
 
 This is the repository that contains source code for the [Agentic Scene Policies website](http://montrealrobotics.agentic-scene-policies.github.io/).
 
-# # BibTeX entry for ConceptGraphs
+# # BibTeX entry for Agentic Scene Policies
 ```
 TODO
 ```
