@@ -333,9 +333,9 @@
               All tools are implemented using an <strong>object-centric scene representation</strong> built from RGB-D data:
             </p>
             <ul>
-              <li>The <strong>object retrieval</strong> retrieval combines CLIP-based similarities and a VLM classification step to retrieve multiple relevant objects per query (if needed). Grounded objects are added to an <strong>inventory</strong> managed by the LLM agent.</li>
-              <li><strong>Spatial reasoning</strong> tools allow to check sizes, distances and spatial predicates (e.g., is left of) between inventory objects.</li>
-              <li>The <strong>interact </strong> tool... (WIP)</li>
+              <li>The <strong>object retrieval</strong> tool combines CLIP-based similarities and a VLM classification step to retrieve multiple relevant objects per query (if needed). Grounded objects are added to an <strong>inventory</strong> managed by the LLM agent.</li>
+              <li><strong>Spatial reasoning</strong> tools allow to check sizes, distances and spatial predicates (e.g., is left of) in the inventory.</li>
+              <li>The <strong>interact </strong> tool takes as input an object and a language description of the the action the agent aims to achieve. Internally, interact processes the action description and object views to predict affordances (when needed) and the relevant skill to be called.</li>
           </div>
           <img class="img-full" src="./static/images/pipeline.svg" />
           <br/>
@@ -345,21 +345,6 @@
 
 
       <div class="columns is-centered">
-        <!-- Manipulation -->
-        <div class="column">
-          <h2 class="title is-3">Manipulation queries</h2>
-          <div class="columns is-centered">
-            <div class="column content">
-              <video poster="" id="snoopy" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/thumbtack_drawer.mp4" type="video/mp4">
-              </video>
-              <p>
-                TODO: Wide range of manipulation queries. High-light open-vocab, spatial reasoning and affordances.
-            </div>
-
-          </div>
-        </div>
-
         <!-- Affordance detection -->
         <div class="column">
           <div class="content">
@@ -370,17 +355,37 @@
               </video>
             </div>
             <p>
-              ASP relies on affordance detection to implement part-level interactions for more complex skills. Our workflow relies on foundation models with strong visual grounding abilities 
+              ASP relies on affordance detection to implement part-level interactions for more complex skills. Our workflow is based on foundation models with strong visual grounding abilities 
               and is adept at mapping various queries to the relevant affordances types and object parts. Here we see predictions 
               for the queries:
               <ul>
-              <li><em>ring the desk bell</em> → <span style="font-weight: bold; color: #f2d500;">[tip_push]</span></li>
-             <li> <em>pick up the mug</em> → <span style="font-weight: bold; color: #6849b2;">[grasp_part]</span> </li>
-             <li> <em>open the drawer</em> → <span style="font-weight: bold; color: #e766b6;">[hook_pull]</span></li>
+              <li><em>ring the desk bell</em> → <span style="font-weight: bold; color: #f2d500;">[tip_push]</span> the bell button</li>
+             <li> <em>pick up the mug</em> → <span style="font-weight: bold; color: #6849b2;">[grasp_part]</span> the mug handle</li>
+             <li> <em>open the drawer</em> → <span style="font-weight: bold; color: #e766b6;">[hook_pull]</span> the drawer handle</li>
               </ul>
             </p>
           </div>
         </div>
+        <!-- Manipulation -->
+        <div class="column">
+          <h2 class="title is-3">Manipulation queries</h2>
+          <div class="columns is-centered">
+            <div class="column content">
+              <video poster="" id="snoopy" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/thumbtack_drawer.mp4" type="video/mp4">
+              </video>
+              <p>By combing an LLM agent with scene query tools, ASP spans a wide range of manipulation behaviors. For example, ASP can deploy the same <strong>[pinch_pull]</strong> skill in different contexts 
+                involving different query verbs and objects:
+              <ul>
+              <li><em>unplug the power adapter</em> → <span style="font-weight: bold; color: #000000;">[pinch_pull]</span> the power adapter</li>
+              <li><em>remove the thumbtack from the board</em> → <span style="font-weight: bold; color: #000000;">[pinch_pull]</span> the thumbtack</li>
+              </ul>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
     </div>
   </section>
 
