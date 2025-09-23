@@ -1,8 +1,8 @@
 # Agentic Scene Policies
 
-This is the repository that contains source code for the [Agentic Scene Policies website](http://montrealrobotics.agentic-scene-policies.github.io/).
+This is the repository that contains source code for the [Agentic Scene Policies website](https://montrealrobotics.ca/agentic-scene-policies.github.io/).
 
-# # BibTeX entry for Agentic Scene Policies
+# BibTeX entry for Agentic Scene Policies
 ```
 TODO
 ```
