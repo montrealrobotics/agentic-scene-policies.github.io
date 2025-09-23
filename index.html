@@ -116,7 +116,7 @@
                 <a href="https://velythyl.github.io/">Charlie Gauthier</a> <sup>1,2</sup>,
               </span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=TCqScyQAAAAJ&hl=it">Francesco Argenziano</a> <sup>3</sup>,
+                <a href="https://www.linkedin.com/in/fra-arg/">Francesco Argenziano</a> <sup>3</sup>,
               </span>
               <span class="author-block">
                 <a href="https://mila.quebec/en/directory/kirsty-ellis">Kirsty Ellis</a> <sup>1,2</sup>,
@@ -327,11 +327,20 @@
           <h2 class="title is-3">Approach</h2>
           <div class="content has-text-justified">
             <p>
-              TODO: Summarize method
+              A wide range of language queries can be solved through object grounding, spatial reasoning, and affordance-level interactions. ASP is designed around a compact set of scene querying tools implementing 
+              these functionalities. Tools are functions that can be called by an LLM agent, and their outputs are fed back to the agent to inform the next tool call during execution.
             </p>
-            <img src="./static/images/pipeline.svg" />
+            <p>
+              All tools are implemented using an <strong>object-centric scene representation</strong> built from RGB-D data:
+            </p>
+            <ul>
+              <li>The <strong>object retrieval</strong> retrieval combines CLIP-based similarities and a VLM classification step to retrieve multiple relevant objects per query (if needed). Grounded objects are added to an <strong>inventory</strong> managed by the LLM agent.</li>
+              <li><strong>Spatial reasoning</strong> tools allow to check sizes, distances and spatial predicates (e.g., is left of) between inventory objects.</li>
+              <li>The <strong>interact </strong> tool... (WIP)</li>
           </div>
-          <br />
+          <img src="./static/images/pipeline.svg" />
+          <br/>
+          <br/>
         </div>
       </div>
 
@@ -358,15 +367,21 @@
             <h2 class="title is-3">Affordance detection</h2>
             <div class="interpolation-image-wrapper-zero-shot">
               <video poster="" id="snoopy" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/particle_filter.mp4" type="video/mp4">
+                <source src="./static/videos/affordances.mp4" type="video/mp4">
               </video>
             </div>
             <p>
-              TODO: Animation of the left side of figure 1? Quick description of the affordance detection.
+              ASP relies on affordance detection to implement part-level interactions for more complex skills. Our workflow relies on foundation models with strong visual grounding abilities 
+              and is adept at mapping various queries to the relevant affordances types and object parts. Here we see predictions 
+              for the queries:
+              <ul>
+              <li><em>ring the desk bell</em> → <span style="font-weight: bold; color: #f2d500;">[tip_push]</span></li>
+             <li> <em>pick up the mug</em> → <span style="font-weight: bold; color: #6849b2;">[grasp_part]</span> </li>
+             <li> <em>open the drawer</em> → <span style="font-weight: bold; color: #e766b6;">[hook_pull]</span></li>
+              </ul>
             </p>
           </div>
         </div>
-
     </div>
   </section>
 
