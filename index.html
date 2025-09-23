@@ -326,7 +326,7 @@
           <h2 class="title is-3">Approach</h2>
           <div class="content has-text-justified">
             <p>
-              A wide range of language queries can be solved through object grounding, spatial reasoning, and affordance-level interactions. ASP is designed around a compact set of scene querying tools implementing 
+              A wide range of language-specified manipulation queries can be solved through object grounding, spatial reasoning, and affordance-level interactions. ASP is designed around a compact set of scene querying tools implementing 
               these functionalities. Tools are functions that can be called by an LLM agent, and their outputs are fed back to the agent to inform the next tool call during execution.
             </p>
             <p>
@@ -336,6 +336,10 @@
               <li>The <strong>object retrieval</strong> tool combines CLIP-based similarities and a VLM classification step to retrieve multiple relevant objects per query (if needed). Grounded objects are added to an <strong>inventory</strong> managed by the LLM agent.</li>
               <li><strong>Spatial reasoning</strong> tools allow to check sizes, distances and spatial predicates (e.g., is left of) in the inventory.</li>
               <li>The <strong>interact </strong> tool takes as input an object and a language description of the the action the agent aims to achieve. Internally, interact processes the action description and object views to predict affordances (when needed) and the relevant skill to be called.</li>
+            </ul>
+            <p>
+              Our skills are implemented using motion planning and do not require demonstrations, enabling strong <strong>zero-shot</strong> performance.
+            </p>
           </div>
           <img class="img-full" src="./static/images/pipeline.svg" />
           <br/>
@@ -356,8 +360,7 @@
             </div>
             <p>
               ASP relies on affordance detection to implement part-level interactions for more complex skills. Our workflow is based on foundation models with strong visual grounding abilities 
-              and is adept at mapping various queries to the relevant affordances types and object parts. Here we see predictions 
-              for the queries:
+              and is adept at mapping various queries to the relevant affordances types and object parts:
               <ul>
               <li><em>ring the desk bell</em> → <span style="font-weight: bold; color: #f2d500;">[tip_push]</span> the bell button</li>
              <li> <em>pick up the mug</em> → <span style="font-weight: bold; color: #6849b2;">[grasp_part]</span> the mug handle</li>
@@ -402,7 +405,11 @@
               <source src="./static/videos/egg_headphones.mp4" type="video/mp4">
             </video>
             <p>
-              TODO: Probably double pick.
+              Our scene representations can be extended to rooms. With an additional <strong>go_to</strong> tool, ASP can solve mobile manipulation queries involving spatial reasoning and multiple open-vocabulary objects such as:
+              <ul>
+              <li><em>place the egg that is near the tomato in the pan</em>
+              <li><em>put the headphones and the play-doh in the box</em>
+              </ul>
             </p>
           </div>
         </div>
@@ -417,7 +424,11 @@
                 <source src="./static/videos/aff_nav_v2.mp4" type="video/mp4">
               </video>
               <p>
-                TODO: Show dial a number or metal cabinet.
+                Similar to the interact tool, <strong>go_to</strong> takes as input a description of the intented action to detect affordances on the target object and inform navigation. This proves critical
+                when facing a specific part is required for interaction such as:
+                <ul>
+                <li><em>dial a number on the phone</em> → navigate to face keypad and <span style="font-weight: bold; color: #f2d500;">[tip_push]</span> the keypad</li>
+                <li><em>open the metal cabinet</em> → navigate to face handle and <span style="font-weight: bold; color: #e766b6;">[hook_pull]</span> the handle</li>
               </p>
             </div>
           </div>
@@ -436,7 +447,11 @@
           <h3 class="title is-3">Comparison with &pi;<sub>0</sub>-FAST and &pi;<sub>0.5</sub></h3>
           <div class="content has-text-justified">
             <p>
-              TODO: Comparison with VLAs. Blablabla. Show some pi0 videos.
+              We compare ASP with two state-of-the-art VLA models, &pi;<sub>0</sub>-FAST and &pi;<sub>0.5</sub>, on 15 manipulation tasks. We use the <a href="https://github.com/Physical-Intelligence/openpi">openpi DROID checkpoints</a> out of the box.
+            </p>
+            <p>
+              While the &pi; models perform well on some complex tasks, including double-grasp manoeuvers to open drawers and some thumbtack removal successes, their overall success rate appears to be limited by fine-grained gripper interactions. The policies
+              often "hover" around the correct objects without completing the grasp or execute skills midair above the object (e.g., keyboard), suggesting high-level query understanding, but potential issues with depth understanding or excessive collision avoidance behaviors.
             </p>
           </div>
           <img class="img-full" src="./static/images/success_rate.svg" />
@@ -511,20 +526,21 @@
             </video>
           </div>
         </div>
+          <p>The 10x white drawer video is a  &pi;<sub>0</sub>-FAST rollout. All other videos are showing  &pi;<sub>0.5</sub>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ASP bloopers -->
+  <!-- ASP Failures -->
   <section class="section">
     <div class="container is-max-desktop">
 
   <div class="columns is-centered">
     <div class="column is-full-width">
-      <h3 class="title is-3">ASP Bloopers</h3>
+      <h3 class="title is-3">ASP Failures</h3>
       <div class="content has-text-justified">
         <p>
-          TODO: ASP failures. Blablabla. Show some ASP failures
+          The modular nature of ASP makes it possible to study specific failures modes. Most of our failures can be attributed to perception, including incorrect object retrieval or affordance detection. We provide a detailed breakdown of failure modes in the paper.
         </p>
       </div>
       <br />
