@@ -4,7 +4,13 @@ This is the repository that contains source code for the [Agentic Scene Policies
 
 # BibTeX entry for Agentic Scene Policies
 ```
-TODO
+@article{morin2025agentic,
+  title={Agentic Scene Policies: Unifying Space, Semantics, and Affordances for Robot Action},
+  author={Morin, Sacha and Gupta, Kumaraditya and Sandhu, Mahtab and Gauthier, Charlie and Argenziano, Francesco and Ellis, Kirsty and Paull, Liam},
+  journal={arXiv preprint arXiv:2509.19571},
+  year={2025}
+}
+
 ```
 
 # Website License
