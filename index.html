@@ -101,7 +101,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-2 publication-title">Agentic Scene Policies</h1>
-            <h2 class="title is-6 publlication-title">Preprint</h2>
+            <h2 class="title is-6 publlication-title">IROS 2026</h2>
             <div class="is-size-6 publication-authors">
               <span class="author-block">
                 <a href="https://sachamorin.github.io/">Sacha Morin</a> <sup>1,2</sup>,
@@ -175,7 +175,7 @@
                 </span> -->
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="https://montrealrobotics.ca/agentic-scene-policies.github.io/" class="external-link button is-normal ">
+                  <a href="https://github.com/montrealrobotics/agentic-scene-policies" class="external-link button is-normal ">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
@@ -298,17 +298,21 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Executing open-ended natural language queries is a core problem in robotics. While recent advances in 
-              imitation learning and vision-language-actions models (VLAs) have enabled promising end-to-end policies, 
-              these models struggle when faced with complex instructions and new scenes. An alternative is to design 
-              an explicit scene representation as a queryable interface between the robot and the world, using query results 
-              to guide downstream motion planning. In this work, we present Agentic Scene Policies (<span class="coolname">ASP</span>), 
-              an agentic framework that leverages the advanced semantic, spatial, and affordance-based querying capabilities 
-              of modern scene representations to implement a capable language-conditioned robot policy. <span class="coolname">ASP</span> 
-              can execute open-vocabulary queries in a zero-shot manner by explicitly reasoning about object  affordances 
-              in the case of more complex skills. Through extensive experiments, we compare <span class="coolname">ASP</span> 
-              with VLAs on tabletop manipulation problems and showcase how <span class="coolname">ASP</span> 
-              can tackle room-level queries through affordance-guided navigation, and a scaled-up scene representation.
+              Designing or learning robot policies that generalize zero-shot across a range of language instructions
+              and objects is a core problem in robotics. Vision-Language-Action models (VLAs) learn such policies
+              end-to-end by repurposing existing Vision-Language Models (VLMs), but generalization to new instructions
+              and objects remains challenging. An alternative is to implement a modular policy by leveraging an explicit
+              VLM-based 3D scene representation and motion planning. While modular policies show strong zero-shot
+              potential, they typically retrieve objects based on semantics without explicit spatial reasoning, severely
+              restricting their overall grounding capabilities. They also interact with objects using basic grasping and
+              navigation skills. In this work, we address these limitations by unifying grounding capabilities and robot
+              skills in a single agentic action space through a scene-agent tool interface. By leveraging part-level
+              affordances, our skills generalize across diverse objects and enable zero-shot interactions such as
+              unplugging chargers and opening drawers. We name the resulting framework Agentic Scene Policies
+              (<span class="coolname">ASP</span>). Through extensive real-world experiments, we show how
+              <span class="coolname">ASP</span> consistently outperforms leading VLAs in the zero-shot setting. We also
+              demonstrate the extensibility of our framework by introducing a mobile version of
+              <span class="coolname">ASP</span> to tackle room-level queries.
             </p>
           </div>
         </div>
